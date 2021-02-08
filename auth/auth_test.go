@@ -1,10 +1,26 @@
 package auth
 
 import (
-	"github.com/jsyzchen/pan/conf"
 	"testing"
+
+	"github.com/jsyzchen/pan/conf"
 )
 
+func init() {
+	conf.TestData = conf.TestDataConfig{
+		ClientID:        "kB968i7bDCqXhAS7RDWAvpFWevvWAGBK",
+		ClientSecret:    "SecretKey:vvLhBFIQZT3VZCdvTe9Cb6w5ReXEQwbM",
+		RedirectUri:     "oob",
+		Code:            "xxxxx",
+		AccessToken:     "xxxxx",
+		RefreshToken:    "xxxxx",
+		Dir:             "xxxxx",
+		FsID:            0,
+		Path:            "xxxxx",
+		LocalFilePath:   "xxxxx",
+		TranscodingType: "xxxxx",
+	}
+}
 func TestAuth_OAuthUrl(t *testing.T) {
 	authClient := NewAuthClient(conf.TestData.ClientID, conf.TestData.ClientSecret)
 	res := authClient.OAuthUrl(conf.TestData.RedirectUri)
